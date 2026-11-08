@@ -1,6 +1,6 @@
-# RDMA & High-Performance Networking in C
+# RDMA & High-Performance Networking on NVIDIA InfiniBand
 
-*Three low-level networking projects in C: a TCP throughput benchmark, an RDMA SEND bandwidth benchmark, and a ring all-reduce collective over RDMA.*
+*Three low-level networking projects in C, built on NVIDIA (Mellanox) InfiniBand and the RDMA verbs API: a TCP throughput benchmark, an RDMA SEND bandwidth benchmark, and a ring all-reduce collective over RDMA.*
 
 ## Overview
 
@@ -9,7 +9,11 @@ performance from the socket layer down to the NIC. Each builds independently,
 ships with its own README, and is written to one consistent C style. The TCP
 project establishes a throughput baseline over ordinary sockets; the two RDMA
 projects use the InfiniBand verbs API directly to push bandwidth and to build a
-collective communication primitive of the kind used in distributed training.
+collective communication primitive of the kind used in distributed training. The
+RDMA work targets NVIDIA Networking — the InfiniBand / RDMA verbs stack NVIDIA
+develops following its acquisition of Mellanox — through `libibverbs`, and the
+ring all-reduce implements the same collective that NVIDIA's NCCL library uses to
+aggregate gradients across GPUs in large-scale training.
 
 ## Highlights
 
@@ -26,7 +30,7 @@ collective communication primitive of the kind used in distributed training.
 ## Tech stack
 
 - C (C11 / GNU C11)
-- InfiniBand verbs (`libibverbs`) for the RDMA projects
+- NVIDIA (Mellanox) InfiniBand verbs (`libibverbs`) for the RDMA projects
 - POSIX TCP sockets
 - GNU Make, GCC
 
