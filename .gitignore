@@ -1,0 +1,17 @@
+# Build artifacts
+*.o
+*.d
+*.out
+*.a
+*.so
+
+# Project executables
+tcp-throughput/client
+tcp-throughput/server
+rdma-bandwidth/server
+rdma-bandwidth/client
+ring-all-reduce/test_rdma
+
+# Editor / OS noise
+*~
+.DS_Store
